@@ -7,32 +7,12 @@ Proyecto:
 - despues preguntara si queremos crear, una nota mostrarlas o borrarlas
 """
 from os import system
-import cuenta as c
+import dependencias.cuenta as c
+import dependencias.interfaz as i
 
-cuenta = c.cuenta()
+cuenta = c.cuenta("localhost", "root", "project_001")
+interfaz = i.interfaz(cuenta)
 
 # Interfaz
 
-while True:
-    
-    system("cls")
-    print("----- Inicio -----")
-    print("[1] login")
-    print("[2] register")
-
-    x = input("ingrese su opcion")
-
-    if(x == '1'):
-        system("cls")
-        print("----- Login -----")
-        cuenta.login()
-        break
-
-    elif(x == '2'):
-        print("----- Registro -----")
-        system("cls")
-        cuenta.registro()
-        break
-
-    else:
-        print("ingrese un valor correcto")
+interfaz.pantalla_principal()
