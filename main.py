@@ -7,12 +7,6 @@ Proyecto:
 - despues preguntara si queremos crear, una nota mostrarlas o borrarlas
 """
 from os import system
-import dependencias.cuenta as c
-import dependencias.interfaz as i
+import dependencias.programa as p
 
-cuenta = c.cuenta("localhost", "root", "project_001")
-interfaz = i.interfaz(cuenta)
-
-# Interfaz
-
-interfaz.pantalla_principal()
+p.programa()

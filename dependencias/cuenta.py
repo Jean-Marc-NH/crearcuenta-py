@@ -1,23 +1,16 @@
-import mysql.connector as sql
 import hashlib
 
 class cuenta:
 
-    def __init__(self, host, user, db, pwd=""):
+    def __init__(self, cursor, dataBase):
         self.password = None
         self.fecha = None
         self.email = None
         self.nombre = None
         self.apellidos = None
 
-        self.dataBase = sql.connect(
-            host = host,
-            user = user,
-            passwd = pwd,
-            database = db
-        )
-
-        self.cursor = self.dataBase.cursor(buffered=True)
+        self.dataBase = dataBase
+        self.cursor = cursor
 
 
     def login(self):
@@ -32,7 +25,7 @@ class cuenta:
 
         for x in usuarios:
             if(self.email == x[3] and cifrado.hexdigest() == x[4]):
-                return True
+                return x[0]
             
         return False
     
